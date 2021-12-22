@@ -4,15 +4,167 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/AppThemeFirebaseAuth"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cornell Notebook"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Notes"
+                android:textColor="#000000"
+                android:textSize="34sp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:clickable="true"
+                android:gravity="right"
+                android:onClick="notebookAdd"
+                app:backgroundTint="@color/white"
+                app:elevation="0dp"
+                app:srcCompat="@android:drawable/ic_input_add" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="#f8fcfc"
+            android:elevation="0dp"
+            android:ems="10"
+            android:fontFamily="@font/open_sans"
+            android:hint="Search"
+            android:inputType="textPersonName"
+            android:padding="10dp" />
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="260dp">
+
+            <LinearLayout
+                android:id="@+id/notebookContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <!--                <com.google.android.material.card.MaterialCardView-->
+                <!--                    android:id="@+id/card"-->
+                <!--                    android:layout_width="160dp"-->
+                <!--                    android:layout_height="240dp"-->
+                <!--                    android:layout_margin="8dp"-->
+                <!--                    android:clickable="true">-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="match_parent"-->
+                <!--                        android:orientation="vertical">-->
+
+                <!--                        <ImageView-->
+                <!--                            android:id="@+id/imageView"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="match_parent"-->
+                <!--                            app:srcCompat="@drawable/ic_launcher_foreground" />-->
+                <!--                    </LinearLayout>-->
+
+                <!--                </com.google.android.material.card.MaterialCardView>-->
+
+                <!--                <com.google.android.material.card.MaterialCardView-->
+                <!--                    android:id="@+id/card2"-->
+                <!--                    android:layout_width="160dp"-->
+                <!--                    android:layout_height="240dp"-->
+                <!--                    android:layout_margin="8dp">-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="match_parent"-->
+                <!--                        android:orientation="vertical">-->
+
+                <!--                        <ImageView-->
+                <!--                            android:id="@+id/imageView2"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="match_parent"-->
+                <!--                            app:srcCompat="@drawable/ic_launcher_foreground" />-->
+                <!--                    </LinearLayout>-->
+
+                <!--                </com.google.android.material.card.MaterialCardView>-->
+
+                <!--                <com.google.android.material.card.MaterialCardView-->
+                <!--                    android:id="@+id/card3"-->
+                <!--                    android:layout_width="160dp"-->
+                <!--                    android:layout_height="240dp"-->
+                <!--                    android:layout_margin="8dp"-->
+                <!--                    android:layout_marginEnd="10dp">-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="match_parent"-->
+                <!--                        android:orientation="vertical">-->
+
+                <!--                        <ImageView-->
+                <!--                            android:id="@+id/imageView3"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="match_parent"-->
+                <!--                            app:srcCompat="@drawable/ic_launcher_foreground" />-->
+                <!--                    </LinearLayout>-->
+
+                <!--                </com.google.android.material.card.MaterialCardView>-->
+
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Recent Notes"
+            android:textSize="20sp" />
+
+        <ListView
+            android:id="@+id/recentNotes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
